@@ -1,0 +1,31 @@
+\section{Předpony (Prefixes)}
+\subsection{Provedení nad automatem}
+Zde je potřeba pouze si uvědomit co je to prefix řetězce. Je prázdý řetězec, první znak, první dva znaky a tak dále, až po poslední znak včetně vice [TODO reference IFJ].  A tedy potřebujeme jen donutit automat aby přijímal všechny řetězce, které mohou vest k řetězci jenž by byl přijat původním automatem. Najdeme si tedy všechny ukončující stavy, uděláme z nich stavy koncové a máme hotovo.
+
+\subsection{Implementace} 
+ \begin{lstlisting}[language=JavaScript,caption={Ukázka implementace Předpon (\textit{src/operations/prefixesFA.js})}]
+ //@flow
+ /*Import potřebných závislostí*/
+ 
+ /**
+ * Generuhe automat přijímající prefixy zadaného automatu
+ * @param {FA} automata
+ * @return {FA}
+ */
+ export default function prefixes(automata: FA): ?FA {
+ 	//vytvoříme nový automat ze starého
+ 	let resAutomata = automata.clone();
+ 	resAutomata.removeTrapStates(); //odstraníme uklízecí stavy
+ 
+	 //všechny stavy se stávají koncovými
+	for(let state of objectValues(resAutomata.states)) {
+ 		state.setAsFinal();
+ 	}
+ 	resAutomata.finalStates = _.clone(resAutomata.states);
+ 
+	 //pro úhlednost přidáme uklízecí stav
+	 resAutomata.ensureOneTrapState();
+ 
+	 return resAutomata;
+ }
+ \end{lstlisting}

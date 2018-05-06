@@ -1,0 +1,13 @@
+\section{Sekvenční vkládání (Sequential Insertion)}\label{sec:seqIns}
+Tato operace je krásně popsána v \cite{lilaKari} strana 23-28. Ale ve svém provedení jako takovém je se jedná o jednoduchou operaci, kdy do libovolného řetězce z jazyka $K$ vložíme na libovolné místo libovolný řetězec z jazyka $L$.
+Tuto operaci si tedy můžeme popsat rovnicí \ref{eq:seqIns}.
+\begin{equation}\label{eq:seqIns}
+	SequentialInserion(K,L) = \{w|w=xyz, xz \in K \land x \in L\}
+\end{equation}
+
+\subsection{Vlastnosti}
+Operace je uzavřená nad regulárními a bezkontextovými jazyky a samozřejmě není komutativní, viz \cite{lilaKari} strana 25-27.
+\subsection{Příklad}
+\textbf{Operace SequentialInsertion nad dvěma jazyky:}\\
+Mějme dva jazyky, $K={abc,def}$ a $L={xy}$\\
+Použití operace nám poté generuje jazyk:\\ $SequentialInsertion(K,L) = \{xyabc,axybc,abxyc,abcxy,xydef,dxyef,dexyf,defxy\}$

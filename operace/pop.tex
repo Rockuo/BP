@@ -1,0 +1,63 @@
+\section{Pop}
+Operace Pop, de facto operace reverzní ke konkatenaci. Tuto operaci si rozdělíme na $LPop(K,L)$ a $RPop(K,L)$. Toto rozdělení provádíme z toho důvodu, že konkatenovat můžeme z obou stran, a tedy bychom rádi z obou stran i odebírali, což musíme nějak specifikovat. Obě operace pop jsou každá, vlastním způsobem omezená operace Sekvenční mazání.
+Obě operace si můžeme definovat následujícím způsobem:
+
+\begin{equation}\label{eq:lPop}
+	LPop(K,L) = \{y|xy |in K \land x \in L\}
+\end{equation}
+
+
+\begin{equation}\label{eq:rPop}
+	RPop(K,L) = \{x|xy |in K \land x \in L\}
+\end{equation}
+
+\subsection{Vlastnosti}
+\begin{theorem}[Uzavřenost lPop nad regulárními jazyky] \label{thm:lPopReg}
+	Libovolné dva regulární jazyky, jsou uzavřené nad operací lPop.
+\end{theorem}
+
+\begin{proof}[Důkaz \ref{thm:lPopReg}]
+	Nechť existují dva jazyky $L_{1}$ a $L_{2}$, nad abecedou $\Sigma$ a nechť existuje automat $M=\{Q,\Sigma,R,s,F\}$ přijímající jazyk $L_{1}$. Pro každé dva stavy $s,q \in Q$  nechť existuje:
+	$$L_{s,q} = \{w|sw\longrightarrow^{*}q \in M; w\in \Sigma\}$$
+	 Poté uvažujme automat:
+	 $$M^{'}=\{Q,\Sigma\cup\{\#\},R^{'},s,F\}$$
+	 kde $$R^{'} = R\cup\{s\#\longleftarrow q|s,q\in Q \land L_{2} \cap L_{s,q} \neq \emptyset\}$$
+	 kde $\#$ je nový symbol nepatřící do abecedy $\Sigma$.
+	 
+	 Následně můžeme tvrdit že:
+	 $$LPop(L_{1},L_{2}) = h(L(M^{'} \cap \Sigma^{*}\#\Sigma^{*}))$$
+	 
+	 Následně důkaz pokračuje, jako důkaz Sekvenčního Mazání, viz \cite{lilaKari} strany 60-61, kde $A^{'}=M^{'}$.
+\end{proof}
+
+\begin{theorem}[Uzavřenost rPop nad regulárními jazyky] \label{thm:rPopReg}
+	Libovolné dva regulární jazyky, jsou uzavřené nad operací rPop.
+\end{theorem}
+
+\begin{proof}[Důkaz \ref{thm:lPopReg}]
+	Nechť existují dva jazyky $L_{1}$ a $L_{2}$, nad abecedou $\Sigma$ a nechť existuje automat $M=\{Q,\Sigma,R,s,F\}$ přijímající jazyk $L_{1}$. Pro každé dva stavy $q \in Q \land f \in F$  nechť existuje:
+	$$L_{q,f} = \{w|qw\longrightarrow^{*}f \in M; w\in \Sigma\}$$
+	Poté uvažujme automat:
+	$$M^{'}=\{Q,\Sigma\cup\{\#\},R^{'},s,F\}$$
+	kde $$R^{'} = R\cup\{s\#\longleftarrow q|s,q\in Q \land L_{2} \cap L_{q,f}\}$$
+	kde $\#$ je nový symbol nepatřící do abecedy $\Sigma$.
+	
+	Následně můžeme tvrdit že:
+	$$LPop(L_{1},L_{2}) = h(L(M^{'} \cap \Sigma^{*}\#\Sigma^{*}))$$
+	
+	Následně důkaz pokračuje, jako důkaz Sekvenčního Mazání, viz \cite{lilaKari} strany 60-61, kde $A^{'}=M^{'}$.
+\end{proof}
+
+Při používání této operace, je důležité mít na paměti, že i-když o ní můžeme uvažovat jako o opaku konkatenace, tedy $RPop(Concatenation(K,L),L) = K$, tak $Concatenation(RPop(K,L),L) \neq K$. A to protože, do $Pop$ operací nepřispívají všechny řetězce jazyka K, nýbrž pouze ty, ze kterých můžeme něco smazat.
+
+\subsection{Příklad}
+\textbf{Ukázka použití LPop a RPop:}\\
+Nechť existují dva jazyky, $K=\{aba,ab,c\}$ a $L=\{a\}$.
+
+Použití operace $LPop$ nám generuje jazyk $K^{'}=LPop(K,L) =\{ba,b\}$ a použití operace $RPop$ nám generuje jazyk $K^{''}=RPop(K,L) =\{ab\}$
+
+\textbf{Ukázka $\mathbf{RPop(Concatenation(K,L),L) = K}$:}\\
+Uvažujme stejné jazyky jako v předchozím příklade, konkatenace $Concatenation(K,L)$ nám generuje jazyk $K^{'}=\{abaa,aba,ca\}$. Následné použití RPop nám generuje opět jazyk $K$, $RPop(K^{'}, L) = K$.
+
+\textbf{Ukázka $\mathbf{Concatenation(RPop(K,L),L) \neq K}$:}\\
+Opět uvažujme stejné jazyky jako v předchozích příkladech, použití operace $RPop(K,L)$ nám generuje jazyk $K^{'}={ab}$, což se zcela zřetelně nerovná $K$

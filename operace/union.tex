@@ -1,0 +1,43 @@
+\section{Sjednocení (Union)}
+Union neboli sjednocení je známá operace kdy sjednocujeme dva jazyky A a B a vzniká nám jazyk C obsahující prvky jazyka A i B. (viz. \ref{eq:Union})
+
+\begin{equation}\label{eq:Union}
+Union(L_{1}, L_{2}) = \{w|w\in L_{1}\lor w\in L_{2}\}
+\end{equation}
+
+\subsection{Vlastnosti}
+Operace uzavřena nad Regulárními a bezkontextovými jazyky. Tedy pokud operaci použijeme nad dvěma regulárními jazyky, výsledkem bude regulární jazyk a obdobně je tomu tak s bezkontextovými. Použijeme-li operaci nad rodinou regulárních jazyků, vznikne nám jiná, větší rodina regulárních jazyků.
+
+Není-li žádný z jazyků v rodině podmnožinou jazyka v téže rodině, tak velikost vzniklé rodiny je dána rovnicí \ref{eq:triangleNumber} (čteme n plus jedna, nad dvěma), kde $n$ je délka původní rodiny. Pokud rodina obsahuje jazyky jenž jsou podmnožinou jazyků v téže rodině, je délka vzniklého jazyka na tomto faktu závislá a proto obecně víme pouze to, že bude menší než hodnota daná rovnicí \ref{eq:triangleNumber}. Je-li však mezi jazyky v rodině taková vazba, že provedení operace $Union$ nad libovolnými dvěma jazyky rodiny nám vytvoří jazyk patřící do této rodiny, víme že  vzniklá rodina jazyků bude totožná s rodinou nad kterou jsme tuto operaci používali. (Viz. podkapitola \ref{sec:UnionExample}) Tento vztah budeme nazývat, že je rodina tranzitivně uzavřena nad operací.
+
+\begin{equation}\label{eq:triangleNumber}
+\binom{n+1}{2}
+\end{equation}
+
+\subsection{Příklad}\label{sec:UnionExample}
+\textbf{Opakované použití operace Union s prázdným jazykem:}\\
+Mějme rodinu jazyků $R_{1}$
+$$
+	R_{1} = \{L_{1}:\{0,00,000\}, L_{2}:\{1ř,11,111\}, L_{3}:\{0,1\}, L_{4}:\{\epsilon\}, L_{5}:\{\}\}
+$$
+Použijme nad touto rodinou sjednocení: $R_{2} = Union(R_{1})$
+
+\begin{align*}
+R_{2} = \{&L_{1}:\{0,00,000\}, L_{2}:\{1,11,111\}, L_{3}:\{0,1\}, L_{4}:\{\epsilon\}, \\
+&L_{5}:\{\}, L_{6}:\{0,00,000,1,11,111\}, L_{7}:\{0,00,000,1\},\\
+&L_{8}:\{0,00,000,\epsilon\}, L_{9}:\{0, 1, 11,111\}, L_{10}:\{1, 11,111,\epsilon\},\\ &L_{11}:\{0,1,\epsilon\}
+&\}
+\end{align*}
+
+A použijme-li sjednocení ještě jednou, získáme tranzitivně uzavřenou rodinu:\\
+\tab$R_{3} = Union(R_{2})$
+
+\begin{align*}
+R_{3} = \{&L_{1}:\{0,00,000\}, L_{2}:\{1,11,111\}, L_{3}:\{0,1\}, L_{4}:\{\epsilon\}, \\
+&L_{5}:\{\}, L_{6}:\{0,00,000,1,11,111\}, L_{7}:\{0,00,000,1\},\\
+&L_{8}:\{0,00,000,\epsilon\}, L_{9}:\{0, 1, 11,111\}, L_{10}:\{1, 11,111,\epsilon\},\\ &L_{11}:\{0,1,\epsilon\},L_{12}:\{0,00,000,1,11,111,\epsilon\},\\
+&L_{13}:\{0,00,000,1,\epsilon\},L_{14}:\{0,1,11,111,\epsilon\}\\
+&\}
+\end{align*}
+ 
+ Obdobný výsledek by nastal u jakékoliv konečné rodiny jazyků. Přesněji řečeno, obsahuje li rodina jazyků $k$ jazyků, tak nejpozději při $k-1$ iteraci se dostaneme k tranzitivně uzavřené rodině.

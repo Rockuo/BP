@@ -1,0 +1,22 @@
+\section{Prefixes}
+Prefixes je operace, jejíž aplikace na K vytváří L, kde L obsahuje všechny řetězce, které jsou prefixy všech řetězců K. (Viz. \ref{eq:Prefixes})
+
+\begin{equation}\label{eq:Prefixes}
+Prefixes(L) = \{w|x=wy; x \in L \land y \in \Sigma_{L}\}
+\end{equation}
+
+\subsection{Vlastnosti}
+\begin{theorem}[Uzavřenost nad regulárními jazyky] \label{thm:PrefixReg}
+	Použití operace Prefixes nad libovolným regulárním jazykem $L$ generuje opět regulární jazyk.
+\end{theorem}
+
+\begin{proof}[Důkaz \ref{thm:PrefixReg}]
+	Mějme konečný automat $M=\{Q_{M}, \Sigma_{M}, R_{M}, s_{M}, F_{M}\}$ pokud je operace Prefixes uzavřená nad regulárními jazyky, je tedy uzavřená nad konečnými automaty a tedy jsme schopni vytvořit konečný automat $N$, který bude přijímat všechny prefixy jazyka $L(M)$.
+	
+	Automat $N$ vytvoříme tak, že vezmeme automat $M$ a všechny stavy, které které nejsou neukončující označíme jako konečné.
+	
+	Automat $N$ je vždy Konečný Automat a přijímá všechny prefixy jazyka L($M$), což potvrzuje, že je operace nad regulárními jazyky uzavřená.
+\end{proof}
+
+\subsection{Příklad}
+Nechť existuje jazyk $L=\{123, 456, 101\}$, Aplikací operace Prefixes můžeme tedy vytvořit jazyk $K=Prefixes(L) = \{'', 1, 12, 123, 4, 45, 456, 10, 101\}$. Zde je třeba si všimnout faktu že řetězec "123" je prefixem řetězce "123", neboť sufixem je ''

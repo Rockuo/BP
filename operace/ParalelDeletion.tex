@@ -1,0 +1,26 @@
+\section{Paralel deletion}
+Paralelní mazání je jedna z mnoha operací soustředících se na mazání jednoho řetězce z řetězce druhého. Narozdíl od Sequential deletion (viz TODO reference), která maže výskyt řetězce u v řetězci v avšak s tím rozdílem, že maže všechny nepřekrývající se výskyty řetězce u. (viz [todo dodělat roovnici, je definována v http://www.fit.vutbr.cz/research/pubs/TR/2005/sem\_uifs/s050121clanek.pdf, ale tomu nerozumim => pochopit => zjednodušit na 2 řetězce, bez použití jazyku => zobecnit na použití nad rodinou jazyků]) 
+
+\subsection{Vlastnosti}
+TODO: vlastnosti při iterovaném použití
+Vlastnosti nad regulárními, bezkontextovými jazyky
+vlastnosti nad jazyky obsahující řetězce nakonečné délky
+
+\section{Operation SubAlpha}
+Toto je jen pomocná operace, kterou si definujeme písemně pro další použití. Operace SubAlpha vrací všechny znaky které řetězec, nebo jazyk obsahuje. (Viz příklad)
+
+\subsection{Příklad}
+$$\Sigma_{1} = \{"a", "b", ..., "z"\}, L = \{"abc", "ade"\}$$
+
+z čehož plyne 
+
+$$u,v \in \Sigma_{1}$$. 
+
+Provedeme-li nad L operaci SubAlpha získáme: 
+
+$$\Sigma_{2} = SubAlpha(L) = \{"a", "b", "c", "d", "e"\}$$
+
+a můžeme též tvrdit 
+
+$$Sigma_{2} \subseteq Sigma_{1}$$
+

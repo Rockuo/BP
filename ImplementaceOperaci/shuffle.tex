@@ -1,0 +1,56 @@
+\section{(Shuffle)}
+\subsection{Provedení nad automatem}
+Aplikace se z počátku může zdát složitá. Uvědomíme-li si však, že můžeme používat složení automatů v kartézském součinu pro sledování cesty v kterém automatu se pohybujeme, zjistíme, že stačí provést pouze následující:\\
+Mějme dva automaty :
+
+$M=\{Q_{M}, \Sigma_{M}, \delta_{M},s_{M}, F_{M}\}$ a $N=\{Q_{N}, \Sigma_{N}, \delta_{N},s_{N}, F_{N}\} $
+
+Promíchání poté provedeme následovně:
+\begin{equation}
+\label{eqA:Intersection}
+\begin{split}
+Shuffle(M,N) = \{ &\\
+ & Q = Q_{M} \times Q_{N},\\
+ &   \Sigma = \Sigma_{M} \cup \Sigma_{N} \\
+    &   \delta = \{ \\
+    & \tab (q_{M},q_{N})\alpha \longrightarrow (q_{M}\alpha, q_{N}) \vee (q_{M},q_{N}\alpha);\\
+    & \tab q_{M} \in Q_{M} \land q_{N} \in Q_{N} \land \alpha \in \Sigma\\
+    & \tab \}, \\
+    &  s = (s_{M}, s_{N}), \\
+    & F = F_{M} \times F_{N} \\
+    & \}
+\end{split}
+\end{equation}
+
+\subsection{Implementace}
+Jak je výše uvedeno v zápisu automatu, promíchání probíhá tak, že se posouváme v dle pravidla automatu $M$, nebo automatu $N$. Viz následující ukázka kódu, kde si ukážeme generování pravidel pro Shuffle.
+\begin{lstlisting}[language=JavaScript, caption={Ukázka generování přechodů pro shuffle (\textit{src/operations/shuffleFA.js})}, label=example:shuffle]
+/**Anotace*/
+function createRules(
+	left: FA,
+	right: FA,
+	newStates: { [key: string]: MergedState }
+): Rule[] {
+	let newRules = [];
+	//pro každý nový stav generujeme pravidla
+	for (let newState: MergedState of objectValues(newStates)) {
+		//generujeme pravidla z levého automatu
+		let leftRules = /*Filtrovaná pravidla levého automatu, pro tento stav*/;
+		for (let rule: Rule of leftRules) {
+			newRules.push(new Rule({
+				from: {state: newState},
+				symbol: rule.symbol,
+				to: {state: newStates[MergedState.createName(rule.to.state, 	newState.oldRight)]}
+			}));
+		}
+
+		//generujeme pravidla z pravého automatu
+		/*Obdobně jako pro lévé*/
+			...
+				to: {state: newStates[MergedState.createName(newState.oldLeft, rule.to.state)]}
+			...
+	}
+	return newRules;
+}
+
+\end{lstlisting}

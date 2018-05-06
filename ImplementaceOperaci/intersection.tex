@@ -1,0 +1,25 @@
+\section{Průnik (Intersection)}
+\subsection{Provedení nad automatem}
+Průnik dvou Automatů je jednoduchá, avšak dosti zdlouhavá operace. Její aplikaci si předvedmě na příkladu.
+Mějme dva automaty :
+
+$M=\{Q_{M}, \Sigma_{M}, R_{M},s_{M}, F_{M}\}$ a $N=\{Q_{N}, \Sigma_{N}, R_{N},s_{N}, F_{N}\} $
+
+Průnik poté provedeme následovně:
+\begin{equation}
+\label{eqA:Intersection2}
+\begin{split}
+    Intersection(M,N) = \{ &\\
+          &Q = Q_{M} \times Q_{N},\\
+    & \tab   \Sigma = \Sigma_{M} \cap \Sigma_{N} \\
+    & \tab   R = \{ (q_{M},q_{N})\alpha \longrightarrow (q_{M}\alpha, q_{N}\alpha);\\
+    & \tab\tab q_{M} \in Q_{M} \land q_{N} \in Q_{N} \land \alpha \in \Sigma\\
+    & \tab\}, \\
+    & \tab s = (s_{M}, s_{N}), \\
+    & \tab F = F_{M} \times F_{N} \\
+    \}&
+\end{split}
+\end{equation}
+
+\subsection{Implementace}
+Implementace zde pouze opisuje postup vytvoření automatu. (Soubor \textit{src/operations/intersectionFA.js})

@@ -1,0 +1,73 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{lodash}
+Dalton, J.-D.; aj.: {\it Lodash}. Duben 2018, [Online; verze 4.17.10 a
+  vyšší; navštíveno 03.05.2018].
+\newline\urlprefix\url{https://lodash.com/}
+
+\bibitem{Flow}
+Facebook: {\it Flow}. Duben 2018, [Online; navštíveno 03.05.2018].
+\newline\urlprefix\url{https://flow.org/}
+
+\bibitem{flow-bin}
+Facebook: {\it flow-bin}. Duben 2018, [Online; verze 0.71.0 a vyšší;
+  navštíveno 03.05.2018].
+\newline\urlprefix\url{https://github.com/flowtype/flow-bin}
+
+\bibitem{instambul}
+{Istanbuljs tým}: {\it Istanbul}. Apr 2018.
+\newline\urlprefix\url{https://istanbul.js.org/, note =}
+
+\bibitem{nyc}
+{Istanbuljs tým}: {\it nyc}. Apr 2018, [Online; verze 11.7.1 a vyšší ;
+  navštíveno 03.05.2018].
+\newline\urlprefix\url{https://github.com/istanbuljs/nyc/}
+
+\bibitem{lilaKari}
+Kari, L.: \emph{On Insertion and Deletion in Formal Languages}. TODO, 1999,
+  ISBN TODO.
+
+\bibitem{babel-cli}
+{Tým Babel}: {\it babel-cli}. {Říjen} 2017, [Online; verze 6.26.0;
+  navštíveno 03.05.2018].
+\newline\urlprefix\url{https://github.com/babel/babel/tree/master/packages/babel-cli}
+
+\bibitem{babel-plugin-transform-object-rest-spread}
+{Tým Babel}: {\it babel-plugin-transform-object-rest-spread}. {Říjen} 2017,
+  [Online; verze 6.26.0; navštíveno 03.05.2018].
+\newline\urlprefix\url{https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread}
+
+\bibitem{babel-preset-es2015}
+{Tým Babel}: {\it babel-preset-es2015}. {Říjen} 2017, [Online; verze 6.26.0;
+  navštíveno 03.05.2018].
+\newline\urlprefix\url{https://github.com/babel/babel/tree/master/packages/babel-preset-es2015}
+
+\bibitem{babel-preset-flow}
+{Tým Babel}: {\it babel-preset-flow}. {Říjen} 2017, [Online; verze 6.23.0;
+  navštíveno 03.05.2018].
+\newline\urlprefix\url{https://github.com/babel/babel/tree/master/packages/babel-preset-flow}
+
+\bibitem{babel-register-cli}
+{Tým Babel}: {\it babel-register-cli}. {Srpen} 2017, [Online; verze 5.0.0;
+  navštíveno 03.05.2018].
+\newline\urlprefix\url{https://github.com/babel/babel/tree/master/packages/babel-cli}
+
+\bibitem{Babel}
+{Tým Babel}: {\it Babel}. Duben 2018, [Online; verze 6.26.3; navštíveno
+  03.05.2018].
+\newline\urlprefix\url{https://flow.org/}
+
+\bibitem{ava}
+Wubben, M.; Sorhus, S.; Demedes, V.: {\it AVA}. {Duben} 2017, [Online; verze
+  1.0.0-beta.3; navštíveno 03.05.2018].
+\newline\urlprefix\url{https://github.com/avajs/ava}
+
+\end{thebibliography}

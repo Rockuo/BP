@@ -1,0 +1,7 @@
+\section{Doplněk (Complement)}
+\subsection{Provedení nad automatem}
+Provedení této operace nad automatem vyžaduje aby měl automat takzvaný uklízecí stav (trap state). Uklízecí stav je takový stav, který je nekoncový a jsou do něj odvedeny přechody, které nemohou vést do jiných stavů. Tento stav je dobře popsán v Dobře specifikovaném automatu [TODO reference IFJ]
+
+\subsection{Implementace}
+Implementace této operace je ve své podstatě velice jednoduchá, jediné co je potřeba je uvědomit si teorii uvedenou výše, tedy že musíme mít uklízecí stav. Poté pouze uděláme z ukončujících stavů neukončující a naopak.\\
+(\textit{src/operations/complementFA.js})

@@ -1,0 +1,49 @@
+\section{Průnik (Intersection)}
+Intersection neboli průnik je opět další známá operace na které si ukážeme jaké má vlastnosti nad rodinami jazyků.
+Průnik jazyků $L_{1}$ a $L_{2}$ nám dává jazyk $L_{3}$, jenž obsahuje pouze přítomné v jazyce $L_{1}$, a zároveň jazyce $L_{2}$. (Viz. \ref{eq:Intersection} )
+
+\begin{equation}\label{eq:Intersection}
+Intersection(L_{1}, L_{2}) = \{w|w\in L_{1}\land w\in L_{2}\}
+\end{equation}
+
+\subsection{Vlastnosti}
+Operace uzavřena nad regulárnímy jazyky avšak nikoliv nad bezkontextovými.
+Tedy oproti Union, pokud použijeme operaci Intersection nad dvěma jazyky jež jsou bezkontextové, nemůžeme si být jisti, že výsledkem bude jazyk bezkontextový.
+
+Při použití nad rodinou jazyků, bude opět vzniklá rodina větší, za předpokladu, že původní rodina nebyla uzavřená.
+
+\subsection{Příklad}
+Na příkladu si ukážeme opakované použití operace Intersection až do vodu kdy se dostaneme do stavu kdy platí, že je operace nad rodinou tranzitivně uzavřená, což bychom si mohly dokázat tak, že operaci použijeme znovu.
+
+\textbf{Opakované použití operace Intersection}\\
+Mějme rodinu jazyků $R_{1}$
+
+\begin{equation*}
+	\begin{split}
+	R_{1} = \{&\\
+		&L_{1}: \{0,1,00\}, L_{2}:\{1,11,00\}, L_{3}:\{0,00,11\},\\
+	\}&
+	\end{split}
+\end{equation*}
+
+Použitím operace Intersection získáme $R_{2}$: $R_{2}=Intersection(R_{1})$
+
+\begin{equation*}
+\begin{split}
+	R_{2} = \{&\\
+		&L_{1}: \{0,1,00\}, L_{2}:\{1,11,00\}, L_{3}:\{0,00,11\},\\
+		&L_{2}: \{1,00\}, L_{2}:\{0,00\}, L_{3}:\{00,11\},\\
+	\}&
+\end{split}
+\end{equation*}
+
+A dalším použitím Intersection se dostáváme k tranzitivně uzavřené rodině $R_{3}$
+
+\begin{equation*}
+\begin{split}
+	R_{3} = \{&\\
+		&L_{1}: \{0,1,00\}, L_{2}:\{1,11,00\}, L_{3}:\{0,00,11\},\\
+		&L_{4}: \{1,00\}, L_{5}:\{0,00\}, L_{6}:\{00,11\},L_{7}: \{00\}\\
+	\}&
+\end{split}
+\end{equation*}

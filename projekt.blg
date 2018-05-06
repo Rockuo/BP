@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Arch Linux)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: projekt.aux
+The style file: bib-styles/czechiso.bst
+Database file #1: projekt-20-literatura-bibliography.bib
+I was expecting a `,' or a `}'---line 123 of file projekt-20-literatura-bibliography.bib
+ :  note =         "
+ :                  [Online; navštíveno 03.05.2018]"
+I'm skipping whatever remains of this entry
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+You've used 13 entries,
+            3151 wiz_defined-function locations,
+            711 strings with 6835 characters,
+and the built_in function-call counts, 4162 in all, are:
+= -- 283
+> -- 112
+< -- 0
++ -- 51
+- -- 32
+* -- 198
+:= -- 500
+add.period$ -- 26
+call.type$ -- 13
+change.case$ -- 53
+chr.to.int$ -- 0
+cite$ -- 13
+duplicate$ -- 405
+empty$ -- 443
+format.name$ -- 34
+if$ -- 889
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 97
+newline$ -- 61
+num.names$ -- 26
+pop$ -- 252
+preamble$ -- 1
+purify$ -- 42
+quote$ -- 0
+skip$ -- 114
+stack$ -- 0
+substring$ -- 87
+swap$ -- 201
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 50
+warning$ -- 0
+while$ -- 26
+width$ -- 15
+write$ -- 125
+(There was 1 error message)

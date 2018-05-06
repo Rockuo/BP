@@ -1,0 +1,109 @@
+\section{Protkání (Interlacement)}
+Tato operace je inspirovaná Shuffle a vkládajícími operacemi. Tato operace je nejvíce podobná operaci Shuffle, kdy nejdříve uvažujme dva řetězce $u$ a $v$. Protkáním těchto dvou řetězců dostáváme řetězec, který se skládá vždy ze symbolu řetězce $u$ a následně symbolu z řetězce $v$. Protkání dvou řetězců si tedy můžeme definovat rovnicí \ref{eq:interlaceStr} s tím, že pokud dva řetězce nemají stejnou délku, nemohou být protkány, jinak se generuje řetězec prázdné délky. Tuto operaci poté následně můžeme generalizovat a použít nad jazyky obdobným způsobem jako jakoukoliv jinou operaci, tedy protkáme každý řetězec z jazyka $K$ s každým řetězcem z jazyka $L$ (viz. rovnice \ref{eq:interlaceLang}). Obdobně bychom mohli operaci generalizovat i na rodinu jazyků (viz rovnice \ref{eq:interlaceFam}). Iterativní použití této operace nad rodinou jazyků by mohlo mít silně expandující efekt, proto si představme ještě variaci, která nám nebude přijímat dva stejné jazyky, tedy může bude růst výrazně pomaleji, případně může za správných okolností stagnovat, i klesat \ref{eq:uniqueInterlaceFam}
+
+\begin{equation}\label{eq:interlaceStr}
+	\begin{split}
+	Interlacement(u,v) = \{&\\
+		&w|w=u_{1}v_{1}u_{2}v_{2}...u_{k}v_{k};\\
+		&u=u_{1}u_{2}...u_{k} \land v=v_{1}v_{2}...v_{k};\\
+		&k \geq 1 \land k= |u| = |v|\\
+	\}&
+	\end{split}
+\end{equation}
+
+\begin{equation}\label{eq:interlaceLang}
+	Interlacement(K,L) = \{w|w=Interlacement(u,v); u\in K \land v \in L; w \neq \epsilon\}
+\end{equation}
+
+
+\begin{equation}\label{eq:interlaceFam}
+	Interlacement(R) = \{J|J=Interlacement(K,L); K,L\in R; J\neq \emptyset\}
+\end{equation}
+
+
+\begin{equation}\label{eq:uniqueInterlaceFam}
+UniqueInterlacement(R) = \{J|J=Interlacement(K,L); K,L\in R \land K \neq L;J \neq \emptyset\}
+\end{equation}
+
+
+\subsection{Vlastnosti}
+\begin{theorem}[Uzavřenost nad regulárními jazyky] \label{thm:InterlacementReg}
+	Libovolné dva regulární jazyky, jsou uzavřené nad operací Interlacement.
+\end{theorem}
+
+\begin{proof}[Důkaz \ref{thm:InterlacementReg}]
+	Mějme automaty $M=\{Q_{M},\Sigma_{M}, R_{M}, s_{M}, F_{M}\}$ a $N=\{Q_{N},\Sigma_{N}, R_{N}, s_{N}, F_{N}\}$ a jimi definované jazyky $K(M)$ a $L(N)$.
+	Nyní jsme schopni vytvořit jazyk $K^{'}(M^{'})=Interlacement(K,L)$:
+	\begin{equation}\label{eq:interlaceProof}
+		\begin{split}
+			M^{'} = \{&\\
+			&Q = \{0,1\}\times Q_{M}\times Q_{N},\\
+			&\Sigma = \Sigma_{M} \cup \Sigma{N},\\
+			& R = \{\\
+			&\quad	(0,q_{M},q_{N})\alpha \longrightarrow(1,q_{M}\alpha,q_{N}),\\
+			&\quad	(1,q_{M},q_{N})\alpha \longrightarrow(0,q_{M},q_{N}\alpha);\\
+			&\quad q_{M} \in M \land q_{N} \in N \\
+			&\}\\
+			&s = (0,s_{M},s_{N}),\\
+			&F = \{(0,q_{M},q_{N})| q_{M} \in F_{M} \land q_{N} \in F_{N}\}\\
+			\}&
+		\end{split}
+	\end{equation}
+	A jelikož jsme schopni sestrojit konečný automat přijímající tento jazyk, víme, že tento jazyk bude regulární. Tedy dostáváme vztah:
+	$$Interlacement(K,L)=K^{'}(M^{'})$$ 
+\end{proof}
+\bigskip 
+Na první pohled by se mohlo zdát, že konečný automat pro tuto výsledek této operace sestrojit nedokážeme, neb se nám sama nabízí možnost zásobníkového automatu, který by "počítal" jestli bychom měli aplikovat pravidla z prvního nebo druhého automatu, ale jelikož zásobník takového automatu by vždy obsahoval jeden symbol (vyjma počátečního), tak jsme toto chování schopni replikovat nad konečnými automaty pomocí zdvojnásobení počtu stavů.
+
+Použití této operace nad jazyky, může generovat prázdný jazyk, z čehož je zřejmé, že né všechny řetězce přispějí do výsledného jazyka, přesněji řetězec z jazyka $K$ takové délky, že neexistuje řetězec v jazyce $L$ stejné délky, nepřispívá do generovaného jazyka a naopak.
+
+Použití operace nad dvěma jazyky vždy generuje jazyk nepřijímají prázdný řetězec.
+
+Použití operace neprázdnou rodinou jazyků vždy generuje větší, nebo alespoň stejně velkou rodinu jazyků, s tím že při iterovaném použití, se výsledek nikdy neustálí a tedy není možné aby byla rodina jazyků nad touto operací tranzitivně uzavřena. 
+  
+  
+Pokud bychom uvažovali upravenou verzi, nepřijímající dva stejné jazyky (Jak jsou dva jazyky porovnávány jsme si ukazovali v kapitole \ref{se:DiferentUnion}), tak budeme li uvažovat rodinu jazyků $R$ dostáváme následující vlastnosti:
+\begin{enumerate}
+	\item Použití operace nad libovolnými dvěma nestejnými jazyky z $R$ vrací prázdný jazyk:
+	
+	Generovaná rodina je prázdná
+	
+	\item \label{enum:interlace1} Obsahuje-li $R$ pouze dva nestejné jazyky, nad nimiž operace negeneruje prázdný jazyk:
+	
+	Generovaná rodina bude obsahovat opět dva stejně velké jazyky jazyky ($Interlacement(K,L) a Interlacement(L,K)$)
+	
+	\begin{enumerate}
+		\item Při iterovaném použití nad takovou rodinou:
+		
+		Od druhého použití víme, že rodina $R_{i}$ bude stejně velká jako rodina $R_{i-1}$, avšak jazyky v rodině $R_{i}$ budou větší než v rodině $R_{i-1}$ a to samé platí i o délce nejdelšího řetězce. 
+	\end{enumerate}
+
+	\item Obsahuje li rodina $R$ více kompatibilních jazyků, víme pouze, že při iterativním použití bude od kroku 2 růst, s tou výjimkou, že obsahuje li rodina pouze dvojce kompatibilních jazyků, bude stagnovat obdobně jako v bodě \ref{enum:interlace1}
+\end{enumerate}
+  
+\subsection{Příklad}
+\textbf{Použití nad dvěma řetězci:}\\
+Nechť existuje řetězec $u=abc$ a řetězec $v=def$, poté řetězce $w=Interlacement(u,v)$ a $w'=Interlacement(v,u)$ jsou:\\
+$w=adbecf$ a $w'=daebfc$
+
+\textbf{Použití nad dvěma Jazyky:}\\
+Nechť existují jazyky $K=\{01,23,45\}$ a $L=\{67, 890\}$, poté jazyky $K^{'}=Interlacement(K,L)$ a $L^{'}=Interlacement(L,K)$ jsou:\\
+$K^{'}=\{0617,2637,4657\}$ a $L^{'}=\{6071,6273,6475\}$
+
+\textbf{Použití nad rodinou jazyků:}\\
+Nechť existuje rodina jazyků $R=\{L_{1}:\{01,23,45\}, L_{2}:\{67,890\}, L_{3}:\{89,ab\}\}$ poté použití operace nad touto rodinou bude vypadat následovně:
+\begin{equation*}
+	\begin{split}
+	R^{'}=Interlacement(R)=\{&L_{1,1}:\{0011,0213,0415,2031,2233,2435,4051,4253,4455\},\\&L_{1,2}:{0617,2637,4657},L_{2,1}:\{6071,6273,6475\},...,\\&L_{3,2}:\{5697,a6b7\},L_{3,3}:\{8899,aabb,8a9b,a8b9\}\}
+	\end{split}
+\end{equation*}
+
+\textbf{Použití unikátní verze operace nad rodinou jazyků:}\\
+Nechť existuje rodina jazyků $R=\{L_{1}:\{01,23,45\}, L_{2}:\{67,890\}, L_{3}:\{89,ab\}\}$ poté použití unikátní verze operace nad touto rodinou bude vypadat následovně:
+\begin{equation*}
+\begin{split}
+R^{'}=UniqueInterlacement(R)=\{&L_{1,2}:\{0617,2637,4657\},L_{2,1}:\{6071,6273,6475\},\\&L_{1,3}:\{0819,2839,4859,0a1b,2a3b,4a5b\},...,\\&\{L_{3,2}:\{5697,a6b7\}\}
+\end{split}
+\end{equation*}
+
+

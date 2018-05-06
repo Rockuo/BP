@@ -1,0 +1,20 @@
+\section{Paralelní vkládání (Parallel Insertion)}\label{sec:parIns}
+Paralelní vkládání je operace velice podobná sekvenčnímu, avšak s tím rozdílem, že pokud máme jazyk $K$ do kterého vkládáme, tak nevkládáme pouze na jednu libovolnou pozici, nýbrž vkládáme na všechny pozice. Operace je opět krásně popsána v \cite{lilaKari} na straně 24-28. Tuto operaci bychom si také mohli definovat rovnicí \ref{eq:parIns}
+
+\begin{equation}\label{eq:parIns}
+	\begin{split}
+	ParallelInsertion(K,L) =\{& \\
+	&w|w=x_{0}u_{0}u_{1}x_{1}...x_{n}u_{n}x_{n+1},\\
+	&\quad x_{k} \in L \land u_{1}u_{1}...u_{n} \in K,\\
+	&\quad n \geq 0	\land 0\leq k \leq n\\	
+	\}&
+	\end{split}
+\end{equation}
+
+\subsection{Vlastnosti}
+Paralelní vkládání je uzavřené nad rekulárními a bezkotextovými jazyky, viz \cite{lilaKari} na straně 27-28.
+
+\subsection{Příklad}
+\textbf{Operace ParallelInsetion nad jazyky:}\\
+Mějme jazyky $K=\{abc\}$ a $L=\{de\}$.\\
+Použití operace nám poté generuje jazyk: $ParallelInsertion(K,L) = \{de\textbf{a}de\textbf{b}de\textbf{c}\}$

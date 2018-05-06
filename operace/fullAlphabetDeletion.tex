@@ -1,0 +1,18 @@
+\section{Plné zakázání abecedy (Full Alphabet deletion)}
+Tato operace je velmi výrazně inspirovaná Paralelním mazáním \cite{lilaKari} strany 55-70, a je zcela aplikovatelná použitím Paralelního mazání, kde bychom místo abecedy použily jazyk, kde každý řetězec je výlučně jeden symbol. Rozdíl této operace s je však v její aplikovatelnosti na konečné automaty (viz \ref{subsec:fadProp}), případně v její implementovatelnosti [TODO reference]. Tato operace je opět lehce popsatelná rovnicí
+
+\begin{equation}
+	\begin{split}
+		FAD(K,\Sigma_{2}) = \{&\\
+		&u_{1}u_{2}...u_{k}u_{k+1}|k\geq1, u_{i} \in \Sigma^{*}, 1\leq i \leq k+1 \land\\
+		&\exists v_{i} \in \Sigma_{2}, 1 \leq i \leq k:u=u_{1}v_{1}...u_{k}v_{k}u_{k+1}v_{k+1}\\
+		&kde \{u_{i}\} \notin \Sigma_{2}\\
+		\}&
+	\end{split}
+\end{equation}
+
+\subsection{Vlastnosti}\label{subsec:fadProp}
+Vzhledem k tomu, že tato operace se dá aplikovat pomocí paralelního mazání, tak víme že stejně jako paralelní mazání bude uzavřená nad regulárními jazyky. Výhodou této operace je však to, že oproti paralelnímu mazání, je ta, že není ani zdaleka tak složitý. Paralelní mazaní samo o sobě vyžaduje velkou režii, a aplikovatelnost nad automatem je velice složitá, kdežto u Plného mazání abecedy, je aplikace primitivní, neb nám pouze stačí projít všechna pravidla automatu ze kterého odstraňujeme abecedu a nahradit odstraňované symboly za $\epsilon$.
+
+\subsection{Příklad}
+ 

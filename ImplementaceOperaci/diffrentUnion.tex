@@ -1,0 +1,7 @@
+\section{Rozdílné sjednocení (Different Union)}
+\subsection{Provedení nad automatem}
+Hlavní podmínkou provedení této operace je porovnat dva jazyky. Jsme-li schopni rozhodnout o jejich rovnosti, poté je uzavřenost a celková proveditelnost operace ponechána jen proveditelnosti sjednocení. Dva jazyky můžeme považovat za schodné, pokud rozdíl těchto jazyků generuje vždy prázdnou množinu v libovolném pořadí použití. Zde je však vidět, že ne všechny typy jazyků lze porovnávat, jelikož ne všechny typy jazyků jsou uzavřeny nad operací rozdíl. Dva automaty považujeme za shodné, pokud přijímají tentýž jazyk.
+
+\subsection{Implementace}
+V implementaci si musíme dávat pozor na porovnávání přijímaných jazyků, avšak pokud se budeme držet teorie a použijeme dříve implementovanou operaci rozdílu. je implementace pouze otázka dvou podmínek.
+(\textit{src/operations/differentUnionFA.js})

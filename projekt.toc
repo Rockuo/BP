@@ -1,0 +1,97 @@
+\babel@toc {czech}{}
+\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{4}{chapter.1}
+\contentsline {chapter}{\numberline {2}Operace}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Sjednocen\IeC {\'\i } (Union)}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Vlastnosti}{5}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}P\IeC {\v r}\IeC {\'\i }klad}{6}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Pr\IeC {\r u}nik (Intersection)}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Vlastnosti}{6}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}P\IeC {\v r}\IeC {\'\i }klad}{7}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Dopln\IeC {\v e}k (Complement)}{7}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Vlastnosti}{7}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.4}Rozd\IeC {\'\i }l (Difference)}{7}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Vlastnosti}{8}{subsection.2.4.1}
+\contentsline {section}{\numberline {2.5}Rozd\IeC {\'\i }ln\IeC {\'e} sjednocen\IeC {\'\i } (Different Union)}{8}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Vlastnosti}{8}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}P\IeC {\v r}\IeC {\'\i }klad}{9}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Operace "rozd\IeC {\'\i }ln\IeC {\'e}" (Operation Diferent)}{9}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Vlastnosti}{10}{subsection.2.6.1}
+\contentsline {section}{\numberline {2.7}Unik\IeC {\'a}tn\IeC {\'\i } konkatenace (Unique Concatenation)}{10}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Vlastnosti}{10}{subsection.2.7.1}
+\contentsline {section}{\numberline {2.8}Prefixes}{10}{section.2.8}
+\contentsline {subsection}{\numberline {2.8.1}Vlastnosti}{10}{subsection.2.8.1}
+\contentsline {subsection}{\numberline {2.8.2}P\IeC {\v r}\IeC {\'\i }klad}{11}{subsection.2.8.2}
+\contentsline {section}{\numberline {2.9}Shuffle}{11}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1}Vlastnosti}{11}{subsection.2.9.1}
+\contentsline {subsection}{\numberline {2.9.2}P\IeC {\v r}\IeC {\'\i }klad}{11}{subsection.2.9.2}
+\contentsline {section}{\numberline {2.10}Sekven\IeC {\v c}n\IeC {\'\i } vkl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } (Sequential Insertion)}{12}{section.2.10}
+\contentsline {subsection}{\numberline {2.10.1}Vlastnosti}{12}{subsection.2.10.1}
+\contentsline {subsection}{\numberline {2.10.2}P\IeC {\v r}\IeC {\'\i }klad}{12}{subsection.2.10.2}
+\contentsline {section}{\numberline {2.11}Paraleln\IeC {\'\i } vkl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } (Parallel Insertion)}{12}{section.2.11}
+\contentsline {subsection}{\numberline {2.11.1}Vlastnosti}{12}{subsection.2.11.1}
+\contentsline {subsection}{\numberline {2.11.2}P\IeC {\v r}\IeC {\'\i }klad}{12}{subsection.2.11.2}
+\contentsline {section}{\numberline {2.12}Protk\IeC {\'a}n\IeC {\'\i } (Interlacement)}{12}{section.2.12}
+\contentsline {subsection}{\numberline {2.12.1}Vlastnosti}{13}{subsection.2.12.1}
+\contentsline {subsection}{\numberline {2.12.2}P\IeC {\v r}\IeC {\'\i }klad}{14}{subsection.2.12.2}
+\contentsline {section}{\numberline {2.13}Sekven\IeC {\v c}n\IeC {\'\i } Maz\IeC {\'a}n\IeC {\'\i } (Sequential Deletion)}{15}{section.2.13}
+\contentsline {subsection}{\numberline {2.13.1}Vlastnosti}{15}{subsection.2.13.1}
+\contentsline {subsection}{\numberline {2.13.2}P\IeC {\v r}\IeC {\'\i }klad}{15}{subsection.2.13.2}
+\contentsline {section}{\numberline {2.14}Pln\IeC {\'e} zak\IeC {\'a}z\IeC {\'a}n\IeC {\'\i } abecedy (Full Alphabet deletion)}{15}{section.2.14}
+\contentsline {subsection}{\numberline {2.14.1}Vlastnosti}{16}{subsection.2.14.1}
+\contentsline {subsection}{\numberline {2.14.2}P\IeC {\v r}\IeC {\'\i }klad}{16}{subsection.2.14.2}
+\contentsline {section}{\numberline {2.15}Pop}{16}{section.2.15}
+\contentsline {subsection}{\numberline {2.15.1}Vlastnosti}{16}{subsection.2.15.1}
+\contentsline {subsection}{\numberline {2.15.2}P\IeC {\v r}\IeC {\'\i }klad}{17}{subsection.2.15.2}
+\contentsline {chapter}{\numberline {3}Implementace ekosyst\IeC {\'e}mu pro implementaci operac\IeC {\'\i }}{18}{chapter.3}
+\contentsline {section}{\numberline {3.1}Po\IeC {\v z}adavky na implementaci}{18}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Roz\IeC {\v s}\IeC {\'\i }\IeC {\v r}en\IeC {\'\i }}{18}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Jazyk a bal\IeC {\'\i }\IeC {\v c}ky implementace}{18}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Bal\IeC {\'\i }\IeC {\v c}ky pou\IeC {\v z}it\IeC {\'e} pro b\IeC {\v e}h (produk\IeC {\v c}n\IeC {\'\i } prost\IeC {\v r}ed\IeC {\'\i })}{19}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Bal\IeC {\'\i }\IeC {\v c}ky pou\IeC {\v z}it\IeC {\'e} pro v\IeC {\'y}voj}{19}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Testovac\IeC {\'\i } prost\IeC {\v r}ed\IeC {\'\i }}{19}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Vstupn\IeC {\v e} v\IeC {\'y}stupn\IeC {\'\i } form\IeC {\'a}t automatu}{20}{section.3.3}
+\contentsline {section}{\numberline {3.4}Implementace}{21}{section.3.4}
+\contentsline {section}{\numberline {3.5}Implementace libovoln\IeC {\'e} operace nad t\IeC {\'\i }mto ekosyst\IeC {\'e}mem}{21}{section.3.5}
+\contentsline {section}{\numberline {3.6}Zprovozn\IeC {\v e}n\IeC {\'\i }}{22}{section.3.6}
+\contentsline {chapter}{\numberline {4}Pou\IeC {\v z}it\IeC {\'\i } operac\IeC {\'\i } nad automaty}{24}{chapter.4}
+\contentsline {section}{\numberline {4.1}Sjednocen\IeC {\'\i } (Union)}{24}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Implementace}{24}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}Pr\IeC {\r u}nik (Intersection)}{25}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Proveden\IeC {\'\i } nad automatem}{25}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Implementace}{25}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Dopln\IeC {\v e}k (Complement)}{26}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Proveden\IeC {\'\i } nad automatem}{26}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Implementace}{26}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Rozd\IeC {\'\i }l (Difference)}{26}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Proveden\IeC {\'\i } nad automatem}{26}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Implementace}{26}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Rozd\IeC {\'\i }ln\IeC {\'e} sjednocen\IeC {\'\i } (Different Union)}{26}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Proveden\IeC {\'\i } nad automatem}{26}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Implementace}{26}{subsection.4.5.2}
+\contentsline {section}{\numberline {4.6}Operace "Rozd\IeC {\'\i }ln\IeC {\'e}" (Operation Different)}{26}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Proveden\IeC {\'\i } nad automatem}{26}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Implementace}{27}{subsection.4.6.2}
+\contentsline {section}{\numberline {4.7}Konkatenace (Concatenation)}{27}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Implementace}{27}{subsection.4.7.1}
+\contentsline {section}{\numberline {4.8}Unik\IeC {\'a}tn\IeC {\'\i } Konkatenace (Konkatenace)}{27}{section.4.8}
+\contentsline {section}{\numberline {4.9}Implementace}{27}{section.4.9}
+\contentsline {section}{\numberline {4.10}P\IeC {\v r}edpony (Prefixes)}{27}{section.4.10}
+\contentsline {subsection}{\numberline {4.10.1}Proveden\IeC {\'\i } nad automatem}{27}{subsection.4.10.1}
+\contentsline {subsection}{\numberline {4.10.2}Implementace}{27}{subsection.4.10.2}
+\contentsline {section}{\numberline {4.11}(Shuffle)}{28}{section.4.11}
+\contentsline {subsection}{\numberline {4.11.1}Proveden\IeC {\'\i } nad automatem}{28}{subsection.4.11.1}
+\contentsline {subsection}{\numberline {4.11.2}Implementace}{28}{subsection.4.11.2}
+\contentsline {section}{\numberline {4.12}Sekven\IeC {\v c}n\IeC {\'\i } Vlo\IeC {\v z}en\IeC {\'\i } (Sequential Insertion)}{29}{section.4.12}
+\contentsline {subsection}{\numberline {4.12.1}Proveden\IeC {\'\i } nad automatem}{29}{subsection.4.12.1}
+\contentsline {subsection}{\numberline {4.12.2}Implementace}{31}{subsection.4.12.2}
+\contentsline {section}{\numberline {4.13}Paraleln\IeC {\'\i } vkl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } (Paralel Insertion)}{31}{section.4.13}
+\contentsline {subsection}{\numberline {4.13.1}Proveden\IeC {\'\i } nad automatem}{31}{subsection.4.13.1}
+\contentsline {subsection}{\numberline {4.13.2}Implementace}{32}{subsection.4.13.2}
+\contentsline {section}{\numberline {4.14}Protk\IeC {\'a}n\IeC {\'\i } (Interlacement)}{32}{section.4.14}
+\contentsline {subsection}{\numberline {4.14.1}Implementace}{32}{subsection.4.14.1}
+\contentsline {section}{\numberline {4.15}Sekven\IeC {\v c}n\IeC {\'\i } maz\IeC {\'a}n\IeC {\'\i } (Sequential Deletion)}{32}{section.4.15}
+\contentsline {section}{\numberline {4.16}Zak\IeC {\'a}z\IeC {\'a}n\IeC {\'\i } abecedy (Full Alphabet deletion)}{32}{section.4.16}
+\contentsline {section}{\numberline {4.17}(Pop)}{32}{section.4.17}
+\contentsline {chapter}{\numberline {5}Z\IeC {\'a}v\IeC {\v e}r}{33}{chapter.5}
+\contentsline {chapter}{Literatura}{34}{chapter*.2}
+\contentsfinish 

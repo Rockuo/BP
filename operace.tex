@@ -1,0 +1,71 @@
+% !TeX spellcheck = cs_CZ
+%=========================================================================
+% (c) Michal Bidlo, Bohuslav Křena, 2008
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\chapter{Úvod}
+TODO definice jak se operuje nad množinami jazyků
+Několik vlastností, které budeme pozorovat pokud bude možno. Délka Nejdelšího řetězce v jazyku(dále jen $BS_{L}$), nebo v rodině(dále jen $BS_{F}$), délka nejkratšího řetězce v jazyku(dále jen $SS_{L}$), případně v rodině(dále jen $SS_{F}$).
+Velikost nejdelšího jazyka v rodině(dále jen $BL$), velikost nejkratšího jazyka v rodině(dále jen $SL$) a nakonec velikost samotné rodiny(dále jen $FS$).
+
+\chapter{Operace} \label{chap:Operace}
+V této kapitole si představíme existující a definujeme si nové operace nad různými množinami(rodinami) jazyků.
+Operace si ukážeme, nad nimi zobrazíme příklady a řekneme si jejich známé vlastnosti. Na příkladech existujících a známých operací budeme poté stavět při představování operací nových. Na vlastnosti složitějších operací, jenž bude potřeba dokazovat se podíváme v další kapitole.
+
+\input{operace/union.tex}
+\input{operace/intersection.tex}
+\input{operace/complement.tex}
+\input{operace/difference.tex}
+\input{operace/differentUnion.tex}
+\input{operace/operationDifferent.tex}
+%\input{operace/reverseConcatenation.tex}
+\input{operace/uniqueConcatenation.tex}
+\input{operace/prefixes.tex}
+\input{operace/shuffle.tex}
+\input{operace/sequentialInsertion.tex}
+\input{operace/ParalelInsertion.tex}
+\input{operace/interlace.tex}
+\input{operace/sequentialDeletion.tex}
+%\input{operace/ParalelDeletion.tex}
+\input{operace/fullAlphabetDeletion.tex}
+%\input{operace/mix.tex}
+\input{operace/pop.tex}
+
+
+
+
+
+
+
+
+
+
+
+% \section{Operation Len}
+% Tato operace je další pomocná operace. Aplikace této operace na řetězec vrací délku řetězce.
+% \section{Permuted Scattered Insertion}
+% TODO (přejmenovat operaci, špatně jsem ji pochopil,u nemá být přeházené [ale nemazat, správné PSI dopsat když bue čas a místo])
+% Tato operace je velmi podobná Shuffle, s tou výjimkou, že nevyžaduje zachování pořadí. (viz. \ref{eq:PSI} [TODO něco mi tam chybí, pravděpodobně nějak vyjádřit, že každá pozice R je použita jen jednou])
+% \begin{equation}\label{eq:PSI}
+% \begin{split}
+% PSI(u,v) = \{& \\
+% & u_{1}v_{1}...u_{i}v_{j}|\\
+% &\tab u=u_{r_{1}}...u_{r_{i}} \land u \in \Sigma* \\
+% &\tab v=v_{s_{1}}...v_{s_{j}} \land v \in \Sigma*\\
+% &\tab u_{p} \in u \land u_{p} \in \Sigma \cup \epsilon;\\
+% &\tab v_{q} \in v  \land v_{q} \in \Sigma \cup \epsilon;\\
+% &\tab 1 \leq p \leq i \land 1 \leq q \leq j;\\
+% &\tab 1 \leq r \leq i \land 1 \leq s \leq j;\\
+% \}&
+% \end{split}
+
+% \end{equation}
+
+% \subsection{Vlastnosti}
+% TODO (zatím odhady)
+% Zajímavou vlastností této operace je ta, že jí můžeme zjednodušit na \ref{eq:PSI_p1}. Pokud nad tím uvažujeme takto, tak nám je zřejmé, že použitím operace na jazyk nám vzniká jazyk nový, který je možno popsat pomocí JA ("Jumping automata"). [Pozn.: tohle si ověřit, je to jen domněnka a nevím jaký bude mít použití této operace reálný dopad na vzniklý jazyk, protože ten JA by se musel hodně omezit, vhledem k faktu, že některé přijímané řetězce budou mít omezenou délku, takže mi vzniká jazyk, který bude obsahovat ab,ba, abcd...dcab, ale nebude obsahovat abc ]
+% \begin{equation}\label{eq:PSI_p1}
+%     PSI(u,v) = \{w| w = \Sigma_{2}^n; \Sigma_{2} = (SubAlpha(u) \cup SubAlpha(v)) \land n = (Len(u)+Len(v)); u,v \in \Sigma_{1}\}
+% \end{equation}
+

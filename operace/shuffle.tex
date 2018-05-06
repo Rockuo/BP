@@ -1,0 +1,29 @@
+\section{Shuffle}
+Operaci shuffle můžeme definovat jako všechny kombinace které vzniknou pomícháním znaků z řetězců u a v se zachováním pořadí znaků tak jak byly v původním řetězci. V podstatě bychom tuto operaci mohli popsat jako prolnutí dvou řetězců. (viz \ref{eq:Shuffle}) Tuto operaci potom můžeme generalizovat tak na jazyky, viz \ref{eq:ShuffleLang}. Znalost a pochopení této operace nám pomůže v chápání dalších operací, jako je vkládání(Kapitoly \ref{sec:seqIns} a \ref{sec:parIns}).
+
+
+\begin{equation}\label{eq:Shuffle}
+\begin{split}
+Shuffle(u,v) = \{& \\
+& u_{1}v_{1}...u_{i}v_{j}|\\
+&\tab u=u_{1}...u_{i} \land u \in \Sigma* \\
+&\tab v=v_{1}...v_{j} \land v \in \Sigma*\\
+&\tab u_{p} \in u \land u_{p} \in \Sigma \cup \epsilon;\\
+&\tab v_{q} \in v  \land v_{q} \in \Sigma \cup \epsilon;\\
+&\tab 1 \leq p \leq i \land 1 \leq q \leq j\\
+\}&
+\end{split}
+\end{equation}
+
+\begin{equation}\label{eq:ShuffleLang}
+Shuffle(K,L) = \{w|w=Shuffle(u,v); u \in K \land v \in L \}
+\end{equation}
+
+
+\subsection{Vlastnosti}
+Operace shuffle je uzavřená nad regulárními jazyky a neuzavřená nad jazyky bezkontextovými.
+
+\subsection{Příklad}
+\textbf{Operace Shuffle nad dvěma řetězci}:\\
+Nechť existují řetězce $u$ a $v$, ta že $u = "ab", v = "cd"$ 
+$Shuffle(u,v)$ se poté bude rovnat $\{"abcd", "acbd", "acdb", "cabd", "cadb", "cdab"\}$

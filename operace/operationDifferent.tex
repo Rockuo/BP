@@ -1,0 +1,17 @@
+\section{Operace "rozdílné" (Operation Diferent)}
+\label{section:OD}
+Operation Diferent, nebo-li rozdílné (neplést s Diference, rozdíl), tato operace přijímá libovolné dva jazyky a provádí nad nimi operaci kterou nejlépe definuje \ref{eq:Different}, pokud bychom ji chtěli definovat do podrobna, byla by popsána rovnicí \ref{eq:Different_detail}
+
+\begin{equation}\label{eq:Different}
+Different(L_{1}, L_{2}) = Union(L_{1}, L_{2}) - Intersection(L_{1}, L_{2})
+\end{equation}
+
+
+\begin{equation}\label{eq:Different_detail}
+Different(L_{1}, L_{2}) = \{w| (w\in L_{1}\land  w\notin L_{2}) \lor (w\notin L_{1}\land  w\in L_{2})\}
+\end{equation}
+
+\subsection{Vlastnosti}
+Vzhledem k faktu, že tato operace jde rozložit na několik jednodušších operací, jsme tak schopni odvodit i chování této operace. Vzhledem k tomu, že všechny operace uvedené v \ref{eq:Different} jsou uzavřené nad regulárními jazyky, můžeme si říci, že celá operace je nad regulárními jazyky uzavřená. Stejným způsobem víme, že tato operace není uzavřená nad bezkontextovými jazyky.
+
+Operace při opakovaném volání nevykazuje žádné speciální vlastnosti, vyjma toho, že jakékoliv použití této operace nad rodinou jazyků nám zaručí existenci prázdného jazyku. Existence prázdného jazyku nám dále zaručí, že v dalším výsledku nám nezmizí žádný jazyk a tedy je výsledná rodina vždy stejná, nebo větší.Po určitém počtu iterací se nakonec dostáváme k rodině, která je nad touto operací tranzitivně uzavřená

@@ -1,0 +1,234 @@
+\chapter{Implementace ekosystému pro implementaci operací} \label{chap:Implementace}
+\section{Požadavky na implementaci}
+Vytvořit jednoduché prostředí, nad kterým bude možné zpracovávat operace nad konečnými automaty.
+
+Prostředí musí splňovat následující požadavky:
+\begin{enumerate}
+    \item Musí umět zpracovávat konečné automaty.
+    \begin{enumerate}
+        \item Přijmutí konečného automatu
+        \item Vypsání konečného automatu
+        \item Aplikování základních operací nad konečnými automaty neměnící přijímaný jazyk. (odstranění nekoncových stavů, nedeterminismu a pod.)
+    \end{enumerate}
+    \item Musí být možné tyto automaty rozšířit/přidat nový typ automatů
+    \item Musí být možné vytvářet operace pro práci nad těmito automaty. (Implementace operací)
+    \item Musí být možné přidávat nové typy automatů.
+    \item Musí být možné na toto prostředí navázat nebo ho používat i v jiných pracích.
+\end{enumerate}
+
+\subsection{Rozšíření}
+	Přidat zpracování zásobníkového automatu, na němž se ukáže rozšiřitelnost ekosystému o další automaty.
+
+\section{Jazyk a balíčky implementace}
+Jako jazyk implementace byl zvolený jazyk JavaScript. Tento jazyk byl zvolen z důvodu, že je podporován obrovskou internetovou komunitou a především knihovna(prostředí) napsané v tomto jazyce půjde použít nejen na serverech a prohlížečích, ale také i na mobilních a desktopových zařízeních.
+
+Pro zpřehlednění čitelnosti kódu je použita verze EcmaScript 2015 [todo teference] a výše a pro typovou kontrolu rozšíření Flow [todo reference] od Facebooku [todo reference]. 
+
+\subsection{Balíčky použité pro běh (produkční prostředí)}
+\begin{itemize}
+    \item Lodash \cite{lodash}
+\end{itemize}
+
+\subsection{Balíčky použité pro vývoj}
+\begin{itemize}
+    \item  Flow \cite{Flow}
+        \begin{itemize}
+            \item flow-bin \cite{flow-bin}: spustitelný program, použitý pro statickou typovou kontrolu projektu
+        \end{itemize}
+    \item Babel \cite{Babel}
+        \begin{itemize}
+            \item babel-cli \cite{babel-cli}: spustitelný program použitý pro  překlad zdrojových kódů v v novější verzi jazyka JavaScript do starší verze jazyka.
+            \item babel-register-cli \cite{babel-register-cli}: překládá jazyk obdobně jako babel-cli, avšak až za běhu programu. Dalo by se říci že rozšiřuje interpret programu. 
+            \item babel-plugin-transform-object-rest-spread \cite{babel-plugin-transform-object-rest-spread}: babel balíček pro rozšíření syntaxe jazyka
+            \item babel-preset-es2015 \cite{babel-preset-es2015}: babel balíček pro překlad z EcmaScript 2015 do starších verzí.
+            \item babel-preset-flow \cite{babel-preset-flow}: babel balíček rozšiřující syntaxi o datové typy pro Flow
+        \end{itemize}
+\end{itemize}
+
+Zde by mohla vzniknout otázka, proč používat Flow a Babel?
+
+Flow je v implementaci použito jak je výše zmíněno pro typovou kontrolu. Není nijak Nutné používat flow v dalších rozšířeních projektu, avšak věřím že typovost dodá programu více spolehlivosti a také výrazně urychluje vývoj už tím, že zamezuje "runtime" chybám vzniklým právě při nekompatibilních typech u netypovaných jazyků. Výrazným soupeřem Flow je TypeScript, který je stejně vhodný. Zde výběr Flow jako typové nadstavby byl tvolen především pro svou kompatibilitu s Reactem[todo reference], což může zjednodušit případný vývoj grafického prostředí v budoucí projektech.
+
+Babel je v implementaci použit tak jak definují balíčky ve výše uvedeném seznamu. Nepoužití Babel by zamezovalo použití Flow a kód napsaný v EcmaScript 2015 by byl omezený pouze na nejnovější verze interpretů a především kdokoliv kdo by chtěl na tomto kódu stavět by musel být obeznámen s EcmaScript 2015, kdežto takto stačí pouze znalost tradičního (slangově oldschool) JavaScriptu, nebo naopak je možné použít zcela jiný přístup, například beztřídní.
+
+\textbf{Upozornění:} Ke konci dubna 2018 přešel Babel na novouverzi 7.0.0-beta.46. Vzhledem k faktu, že se nejedná o plné uvolnění Babel 7 a že tato práce je psána před vypuštěním Babel 7, jsou výše uvedené Babel knihovny závislé na verzi 6.*. Tento fakt nemá sebemenší vliv na implementaci, ani případné používání praktické části této práce v jiných projektech. Pouze je potřeba aby čtenář věděl, že výše uvedené knihovny jsou nyní "depracated" a tedy při navazujících pracích je doporučováno používat Babel 7, který má však jiný ekosystém. (Nebude-li však navazující práce používat Babel vůbec, tento fakt ji nijak neovlivní, jelikož práce obsahuje i překompilovanou verzi JavaScriptových souborů.)
+
+\subsection{Testovací prostředí}
+Pro testovací prostředí byl vybrán framework AVA \cite{ava} a pro zjištění pokrytí kódu je používán Istanbul Code Coverage\cite{instambul}, respektive jeho verzi pro příkazovou řádku "nyc" \cite{nyc}
+
+
+
+\section{Vstupně výstupní formát automatu}
+Formát jazyka bude nejlépe vysvětlen jeho popisným příkladem viz \ref{example:format}, kde <cokoliv>, není součástí formátu, nýbrž popis hodnoty. Důležité je pouze zmínit, že formát je v zápisu JSON, jeho struktura je odvozena od množinového zápisu automatu, a uvedený příklad popisuje povinné hodnoty pro konečný automat a je možné ho jakkoliv rozšířit, bez porušen kompatibility, při zachování stávající struktury
+
+%Define the listing package
+\begin{lstlisting}[language=JavaScript,label={example:format}, caption={Přijímaný formát konečného automatu}]
+{
+
+    "states": [
+    		{name: <unikátní název stavu (řetězec)>},
+     		{name:  <unikátní název stavu (řetězec)>
+     		],
+    "alphabet": [<symbol abecedy (řetězec)>,...],
+    "rules": [
+        {
+            "from": {"state": {"name": <název existujícího stavu (řetězec)>},},
+            "to": {"state": {"name": <název existujícího stavu (řetězec)>}},
+            "symbol": <existující symbol abecedy (řetězec)>,
+        },
+        {
+            "from": {"state": {"name": <název existujícího stavu (řetězec)>},},
+            "to": {"state": {"name": <název existujícího stavu (řetězec)>}},
+            "symbol": <existující symbol abecedy (řetězec)>,
+        }
+    ],
+    "finalStates": [{name: <název existujícího stavu (řetězec)>}],
+    "initialState": {name: <název existujícího stavu (řetězec)>}
+}
+
+\end{lstlisting}
+
+V rámci rozšíření, pro zásobníkové automaty, je tento formát obohacen o následující klíče:
+\begin{lstlisting}[language=JavaScript,label={example:format}, caption={Rozšíření pro zásobníkový automat}]
+{
+	"rules": [
+		{
+			"from": {
+				"state": {"name": <název existujícího stavu (řetězec)>},
+				"stackTop": <symbol co musí být na vrcholu zásobníku (řetězec délky 1)>
+			},
+			"to": {
+				"state": {"name": <symoy které budou na vrcholu zásobníku (řetězec délky 0-2)>}
+			},
+			"symbol": <existující symbol abecedy (řetězec)>,
+		},
+	],
+	"initialStackSymbol": <(řetězec o délce 1)>,
+	"stackAlphabet": [<symbol zásobníkové abecedy(řetězec o délce 1)>,...]
+}
+
+\end{lstlisting}
+
+Zde je důležité, dát si velký pozor na to, že symbol zásobníkové abecedy musí být řetězec délky jedna. 
+
+\section{Implementace}
+Samotná implementace je provedena třídně objektově, kde každá součást automatu a automat sám je objekt, obdobně jako je tomu u formátu výše. Nejednoduší popsání bude pomocí třídní reprezentace viz \ref{example:hierarchy}, obdobně jako výše popsaný formát.
+
+
+% Using typewriter font: \ttfamily inside \lstset
+
+
+\begin{lstlisting}[language=JavaScript,label={example:hierarchy}, caption={Třídní hierarchie implementace}]
+class Automata = {
+    states: { <název stavu (řetězec)>: State };
+    alphabet: Alphabet;
+    rules: Rule[]; //pole Rule
+    initialState: State;
+    finalStates: { <název stavu (řetězec)>: State };
+}
+
+class State = {
+    name: <(řetězec)>;
+    isInitial: boolean;
+    isFinal: boolean;
+    isNonterminating: boolean;
+}
+
+class Alphabet = <Pole s pouze unikátními prvky (pole)>
+
+class Rule = {
+    from: {state:State};
+    to: {state:State};
+    symbol: string;
+}
+
+\end{lstlisting}
+
+
+
+\section{Implementace libovolné operace nad tímto ekosystémem}
+Každá operace jenž je možné provést nad daným automatem je pro tento typ automatu pomocí implementovatelná.
+Tato kapitola se bude věnovat implementace hypotetické operace.
+
+Představme si tedy unární operaci $allowEmpty$ jejímž cílem je pouze donutit automat aby přijímal prázdný řetězec.
+(viz \ref{example:allowEmptyES6} a \ref{img:allowEmptyES5})
+
+
+\begin{lstlisting}[language=JavaScript,label={example:allowEmptyES6}, caption={Ukázka implementace operace za použití EcmaScript 2015 a Flow}]
+//@flow
+import FA from "../Automata/FA/FA.js";
+
+/**
+* Generuje automat přijímající prázdný řetězec
+* @param {FA} automata
+*/
+export default function allowEmpty(automata:FA):FA {
+	let newAutomata = automata.copy();
+	newAutomata.initialState.isFinal = true;
+	return newAutomata;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript,label={img:allowEmptyES5}, caption={Ukázka implementace operace pomocí standardního JavaScriptu}]
+var FA = require("../Automata/FA/FA.js").default;
+
+/**
+* Generuje automat přijímající prázdný řetězec
+* @param {FA} automata
+*/
+function allowEmpty(automata) {
+	var newAutomata = automata.copy();
+	newAutomata.initialState.isFinal = true;
+	return newAutomata;
+}
+window.exports = {default:allowEmpty};
+\end{lstlisting}
+
+
+K použití operace pak už pouze stačí, vytvořit automat a zavolat tuto operaci tak, že automat je jejím argumentem. (příklad viz \ref{example:Use})
+
+\begin{lstlisting}[language=JavaScript,label={example:Use}, caption={ukázka použití operace}]
+import FA from "../Automata/FA/FA.js";
+import allowEmpty from 'allowEmpty.js';
+let automata = new FA(/*...*/);
+let newAutomata = allowEmpty(automata);
+----------------------------------------------------------------------
+var FA = require("../Automata/FA/FA.js").default;
+var allowEmpty = require('allowEmpty.js').default;
+var automata = new FA(/*...*/);
+var newAutomata = allowEmpty(automata);
+\end{lstlisting}
+
+\section{Zprovoznění}
+Pro zprovoznění práce je nutné mít nainstalováno následující:
+\begin{enumerate}
+	\item \textit{node} verze 9.11.1 a vyšší \url{https://nodejs.org/en/download/}
+	\item \textit{npm} verze 5.8.0 a vyšší \url{https://www.npmjs.com/get-npm}, 
+\end{enumerate}
+Práce jako taková může běžet na serveru EVA, bez potřeby jakýchkoliv doplňků.
+
+
+\textbf{Zprovoznění pro použití:}
+\begin{enumerate}
+	\item Získání kódů bakalářké práce
+	\item cd \{havní složka práce\}
+	\item npm install --production
+\end{enumerate}
+\textbf{Zprovoznění pro úpravu:}
+\begin{enumerate}
+	\item Získání kódů bakalářké práce
+	\item cd \{havní složka práce\}
+	\item npm install
+\end{enumerate}
+
+\textbf{Spuštění testů:}
+Zprovozníme pro úpravu, můžeme použít i zprovoznění pro použití, ale pak je potřeba: \textit{npm install ava}\\
+Máme li zprovozněno pouze pro použití s AVA, můžeme spustit testy pomocí \textit{npm test}, Máme li zprovozněno pro úpravu, můžeme použít nasledující příkazy:
+\begin{enumerate}
+	\item \textit{npm test} \#spustí testy
+	\item \textit{npm run build} \#vygeneruje novou složku \textbf{dist} dle změn v \textbf{src}
+	\item \textit{npm run testbuild} \#spustí build a následně testy
+	\item \textit{npm run testES6} \#spustí testy nad src
+	\item \textit{npm run coverage} \#spustí testy s "code coverage"
+	\item \textit{npm run lcovCoverage} \#spustí testy s "code coverage", které generují \textit{coverage/lcov-report/index.html}, což je hezky proklikatelná verze "code coverage"
+\end{enumerate}

@@ -1,0 +1,14 @@
+\section{Sekvenční Mazání (Sequential Deletion)}
+Sekvenční mazání je operace vzdáleně podobná sekvenčnímu vkládání a to tak, že bychom ji mohly nazvat přesným opakem. Takto si ji však můžeme nazvat pouze neformálně, nemůžeme u této operace spoléhat na $SequentialDeletion(SequentialInsertion(L))=L$(viz příklad).
+Více je tato operace popsána v \cite{lilaKari} na straně 55-70. Tato operace je lehce popsatelná rovnicí \ref{eq:seqDel}.
+
+\begin{equation}\label{eq:seqDel}
+	SequentialDeletion(K,L) = \{w|w=xz; xyz \in K \land y \in L\} 
+\end{equation}
+
+\subsection{Vlastnosti}
+Všechny vlastnosti si dopodrobna může čtenář přečíst ve výše uvedené knize, jako sumarizaci se zde však hodí podotknouti, že operace je uzavřená nad regulárními jazyky.  
+
+\subsection{Příklad}
+\textbf{Ukázka toho, že $SequentialDeletion(SequentialInsertion(K,L),L)\neq K$:}\\
+Mějme jazyky $K=\{abc\}$ a $L=\{a\}$. Použijeme-li sekvenční vkládání, dostáváme $K_{2} = SequentialInsertion(K,L)=\{aabc,abac,abca\}$. Pokud následně použijeme sekvenční mazání, dostáváme $K_{3}=SequentialDeletion(K_{2},L) = \{abc,bac,bca\}$ což se zcela zřetelně nerovná $K$.

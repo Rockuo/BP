@@ -1,0 +1,51 @@
+\section{Sjednocení (Union)}
+Návod jak provést tuto operaci je předveden v předmětu IFJ [TODO reference] a proto se podíváme pouze na její implementaci.
+\subsection{Implementace}
+V této operaci si ukážeme, nejen jak provést sjednocení, ale jak ho provést nad několika typy automatů. Proto, ikdyž se jedná o relativně jednoduchou operaci, ukážeme si zde její kód.
+
+\begin{lstlisting}[language=JavaScript,label={example:union}, caption={Ukázka implementace operace Union (\textit{src/operations/union.js})}]
+{
+//@flow
+/*Import ptřebných věcí*/
+
+/**
+* Sjednocení dvou Automatů
+* @param {Automata} left
+* @param  {Automata} right
+* @return Automata
+*/
+export default function union(left: (Automata | PA | FA), right: (Automata | PA | FA)) {
+	//Převedeme si automat na jeho serializovatelnou reprezentaci
+	let plainLeft: T_AnyPlainAutomata = toPlainLeft(left),
+			plainRight: T_AnyPlainAutomata = toPlainRight(right);
+
+	// suffix pro nové stavy
+	let suffix = State.randomName();
+
+
+	//sestrojíme automat
+	let plainUnion:T_AnyPlainAutomata = {
+			states: [{name: 's' + suffix}, /*původní stavy obou automatů*/],
+			alphabet: [./*sjednocení abeced*/],
+			finalStates: [/*sjednocení koncových stavů*/],
+			initialState: {name: 's' + suffix}
+	};
+
+	// wrapper pro předávání parametrů
+	let paFun = /*funkce pro zásobníkový automat*/;
+	// wrapper pro předávání parametrů
+	let faFun = /*funkce pro konečný automat*/;
+
+	// Nastavíme jaká funkce se má volat pro kterou kombinaci automatů
+	//v tomto případě, pokud je jeden z automatů Zásobníkový, používáme funkci additionalPA
+	return overload(
+		[
+			{parameters: [{value: left, type: FA}, {value: right, type: PA}], func: paFun},
+			{parameters: [{value: left, type: PA}, {value: right, type: FA}], func: paFun},
+			{parameters: [{value: left, type: PA}, {value: right, type: PA}], func: paFun},
+			{parameters: [{value: left, type: FA}, {value: right, type: FA}], func: faFun},
+		]
+	);
+}
+
+\end{lstlisting}
